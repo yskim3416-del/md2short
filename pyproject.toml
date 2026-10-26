@@ -1,0 +1,29 @@
+[project]
+name = "md2short"
+version = "1.0.0"
+description = "마크다운 1개 → 한국어 9:16 숏폼 MP4 (ElevenLabs + Remotion)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "typer>=0.12",
+    "pydantic>=2.7",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+]
+
+[project.scripts]
+md2short = "md2short.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["md2short"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["render: requires ffmpeg + remotion/node_modules (slow)"]

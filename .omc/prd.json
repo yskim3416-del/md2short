@@ -1,0 +1,142 @@
+{
+  "project": "MD2Short",
+  "description": "MD2Short v1 (emoticon mode) — spec: .omc/specs/deep-interview-md2short-v1.md",
+  "repoQualityClass": "production",
+  "repoQualityClassNote": "Inferred: docs specify production-grade v1 (QC, retries, state machine); personal local tool but no reason to lower the bar.",
+  "feedbackCommands": [
+    "uv run pytest -q -p no:cacheprovider >NUL 2>&1 || uv run pytest -q -p no:cacheprovider"
+  ],
+  "created_at": "2026-10-26T05:22:57.682Z",
+  "archived_stories": [],
+  "branchName": "main",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Foundation: environment, project scaffold, README, memory/",
+      "description": "Topology: foundation (spec AC-1, AC-2)",
+      "acceptanceCriteria": [
+        "uv, ffmpeg, ffprobe resolve on PATH (version commands exit 0)",
+        "git repo initialized; .gitignore excludes .env, jobs/, output/, node_modules/, remotion/public/jobs/, .venv/",
+        "pyproject.toml defines package md2short with console script md2short; uv sync exits 0",
+        "README.md documents install, .env keys, run/status/clean usage, pytest",
+        "memory/_template.md, memory/_daily/, memory/topics/{time-sync,external-api,remotion-render,build-errors,git-workflow}.md exist per docs/memory.md"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 1,
+      "completionCriteriaRevision": "sha256:2b715e254d0c2c91124866ff4ac9e3da523638fe73129b9a8115e2c04ea04f5d"
+    },
+    {
+      "id": "US-002",
+      "title": "Core abstractions: schema, time helper, state machine, jobs, retry, CLI",
+      "description": "Topology: voice-script core (AC-3, AC-4)",
+      "acceptanceCriteria": [
+        "md2short/schema.py JobConfig matches architecture 4.1 (language Literal ko, visual_mode emoticon|photo)",
+        "Single ms_to_frames/frames_to_ms helper in Python (md2short/timeutil.py) with tests; no other ms<->frame conversion in Python",
+        "md2short/state.py validate_transition allows only the architecture 3 sequence plus any non-terminal -> failed; tests cover allowed and rejected transitions",
+        "job_id matches ^sf_\\d{8}_[0-9a-f]{6}$ (tested)",
+        "_retry.post_with_retry retries 429/5xx/timeout 3x with 0.5/1.0/2.0s backoff (tested with mocked transport, no real sleep)",
+        "uv run md2short --help lists run, status, clean; missing ELEVENLABS_API_KEY -> exit 1 with clear message; --visual-mode photo -> exit 1 with explicit not-implemented message; invalid --lang/--chunk-size -> exit 1"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 2,
+      "completionCriteriaRevision": "sha256:038c453290030a2c8483561ed9da8e612031e24b741289acc80ab5fff32a19d5"
+    },
+    {
+      "id": "US-003",
+      "title": "Remotion composition renders from fixture props (integration spike)",
+      "description": "Topology: remotion (AC-5/AC-7 foundation)",
+      "acceptanceCriteria": [
+        "remotion/ project with Root.tsx (1080x1920, 30fps, calculateMetadata), TechExplainer, Captions, VisualLayer, NumberCard, BrandHeader, BottomBar, OpeningBriefing, Outro, types.ts; npm install succeeds",
+        "Single msToFrames helper in Remotion (remotion/src/time.ts); components import it",
+        "Captions split by sentence boundary (punctuation or gap>=600ms), max 2 lines, honour captionSegments when present",
+        "Header logo placeholder img/header_logo.png generated; font.css falls back to system Korean font when Seoul fonts absent; company/ empty dir and logo cues skipped when no file",
+        "npx remotion render with a fixture props.json + fixture words.json + generated audio produces an MP4 of expected duration (+-100ms)",
+        "No ffmpeg subtitles/overlay used anywhere (grep check)"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 3,
+      "completionCriteriaRevision": "sha256:b39035a89153d329255efa8ca7d5a5402697d101fe8218fba4761661de85c0de"
+    },
+    {
+      "id": "US-004",
+      "title": "External API engines: script_engine, voice, transcript (mocked tests)",
+      "description": "Topology: voice-script (AC-3)",
+      "acceptanceCriteria": [
+        "script_engine calls OpenAI Responses API with Structured Outputs schema hook/body/cta and <user_content> wrapping; falls back to script.fallback_extract on missing key/error/non-Korean output, recording plan.engine and plan.fallback_reason",
+        "_looks_korean guard tested (Korean passes, English sentence leak fails, S&P500/AI tokens allowed)",
+        "voice.synthesize posts to /v1/text-to-speech/{voice_id} model eleven_multilingual_v2, writes mp3; TTS text saved to logs/tts_input.txt",
+        "transcript.transcribe posts to /v1/speech-to-text scribe_v1 language kor, saves logs/scribe_raw.json, writes words.json with integer ms start/end and audio_duration_ms",
+        "All three tested with mocked httpx (no network)"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 4,
+      "completionCriteriaRevision": "sha256:7230f11f153db93690a97df1a0a91dd4a33e720ed3bee6cca41da45be24ea7d3"
+    },
+    {
+      "id": "US-005",
+      "title": "Planners: tts_text, numeric_display, caption_plan, emoticon_map, data_extract, storyboard, opening",
+      "description": "Topology: planner (AC-3)",
+      "acceptanceCriteria": [
+        "caption_plan segments match the Remotion Captions rule (same boundary rules) - tested on fixture words",
+        "emoticon_map maps keywords to all 60 emoticon/*.png files; every cue file exists on disk; deterministic output",
+        "data_extract finds %, 포인트, 조/억/만+원/달러, index+number in sample.md text; max 6, cooldown 2.5s",
+        "numeric_display restores S&P500 / 7,230 / 0.94% display text from Korean-pronounced Scribe words without changing timings",
+        "storyboard detects ### N컷 and uses only the 자막 field for narration; maps cuts to words.json sentence boundaries",
+        "tts_text normalizes numbers/acronyms for pronunciation while the display script is unchanged",
+        "opening produces spoken opening + 2-line visual text and openingDurationMs from words.json"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 5,
+      "completionCriteriaRevision": "sha256:c6820d4be94701ea8e2b9dbbeeec957a2c50d595ffe671da979492c6c41e2d3b"
+    },
+    {
+      "id": "US-006",
+      "title": "Pipeline, render wrapper, QC, status/clean - offline E2E with mocked APIs",
+      "description": "Topology: qc-output + pipeline (AC-4, AC-5 prerequisite)",
+      "acceptanceCriteria": [
+        "pipeline.run_job writes status.json through created->...->qc_passed|qc_failed and all architecture 3.3 required artifacts",
+        "render stages narration/words/props under remotion/public/jobs/<id>/, symlink-or-copy emoticon/img/company, writes logs/remotion.log, durationInFrames from ffprobe audio duration",
+        "qc_report.json has sync_last_word_vs_audio (+-1000ms), final_mp4_vs_audio (+-100ms), cost estimate, duration_policy",
+        "output/ret.mp4 copy (overridable with --output, empty disables)",
+        "exception during run -> status failed, exit code 2",
+        "status <job_id> prints status + QC summary; clean --older-than 7d --dry-run lists without deleting",
+        "Offline E2E test: run_job with mocked OpenAI/ElevenLabs (fixture audio + words) produces a qc_passed MP4"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 6,
+      "completionCriteriaRevision": "sha256:f2bc080459991ca87dbae82e14332597b6059aff19d460a06adfd33e746aaa21"
+    },
+    {
+      "id": "US-007",
+      "title": "Real API E2E: sample.md and storyboard sample",
+      "description": "AC-5, AC-6 - requires user-provided keys in .env",
+      "acceptanceCriteria": [
+        "uv run md2short run sample.md with real keys -> status qc_passed, output/ret.mp4 exists, all 3.3 artifacts present",
+        "samples/storyboard.md (### N컷) real run -> qc_passed; narration (inputs/script.md) contains only 자막 fields"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 7,
+      "completionCriteriaRevision": "sha256:1ba0f4978b7dbc0a6a2d40903572c58b88affb296ae49d4f5f5c051f0ef69f83"
+    },
+    {
+      "id": "US-008",
+      "title": "Frame visual review + docs sync",
+      "description": "AC-7, AC-8",
+      "acceptanceCriteria": [
+        "Frames extracted from both real outputs show captions within the bottom bar (<=2 lines), tiger visual, number card, opening box, header - reviewed and captures reported to the user",
+        "Every deviation from docs detail values is reflected in docs/architecture.md (and README/AGENTS.md as needed)"
+      ],
+      "passes": true,
+      "architectVerified": false,
+      "priority": 8,
+      "completionCriteriaRevision": "sha256:8205372e594570f5996f085aefdc0a0b9b1fd140489274f2f630d258c893c736"
+    }
+  ]
+}

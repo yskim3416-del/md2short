@@ -1,0 +1,358 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1792995588575,
+  "projectRoot": "d:\\short03",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "pyproject.toml"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "pytest",
+        "version": null,
+        "category": "testing"
+      }
+    ],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": "pytest",
+    "lintCommand": "ruff check",
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs",
+      "tests"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "company": {
+      "path": "company",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1792995588461,
+      "keyFiles": [
+        "README.md"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 6,
+      "lastAccessed": 1792995588463,
+      "keyFiles": [
+        "architecture.md",
+        "commit.md",
+        "memory.md",
+        "PRD.md",
+        "README.md"
+      ]
+    },
+    "emoticon": {
+      "path": "emoticon",
+      "purpose": null,
+      "fileCount": 60,
+      "lastAccessed": 1792995588464,
+      "keyFiles": [
+        "01_정독중_리포트.png",
+        "02_머리아파_혼란.png",
+        "03_굿굿_칭찬.png",
+        "04_나도울고싶어_하락.png",
+        "05_분석중_차트.png"
+      ]
+    },
+    "font": {
+      "path": "font",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1792995588466,
+      "keyFiles": [
+        "README.md"
+      ]
+    },
+    "img": {
+      "path": "img",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1792995588467,
+      "keyFiles": [
+        "header_logo.png"
+      ]
+    },
+    "jobs": {
+      "path": "jobs",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1792995588470,
+      "keyFiles": []
+    },
+    "md2short": {
+      "path": "md2short",
+      "purpose": null,
+      "fileCount": 20,
+      "lastAccessed": 1792995588471,
+      "keyFiles": [
+        "caption_plan.py",
+        "cli.py",
+        "data_extract.py",
+        "emoticon_map.py",
+        "numeric_display.py"
+      ]
+    },
+    "memory": {
+      "path": "memory",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1792995588473,
+      "keyFiles": [
+        "_template.md"
+      ]
+    },
+    "output": {
+      "path": "output",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1792995588474,
+      "keyFiles": [
+        "ret.mp4",
+        "storyboard.mp4"
+      ]
+    },
+    "remotion": {
+      "path": "remotion",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1792995588476,
+      "keyFiles": [
+        "package-lock.json",
+        "package.json",
+        "remotion.config.ts",
+        "tsconfig.json"
+      ]
+    },
+    "samples": {
+      "path": "samples",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1792995588477,
+      "keyFiles": [
+        "storyboard.md"
+      ]
+    },
+    "tests": {
+      "path": "tests",
+      "purpose": "Test files",
+      "fileCount": 6,
+      "lastAccessed": 1792995588479,
+      "keyFiles": [
+        "conftest.py",
+        "test_cli.py",
+        "test_core.py",
+        "test_engines.py",
+        "test_pipeline.py"
+      ]
+    },
+    "remotion\\fixtures": {
+      "path": "remotion\\fixtures",
+      "purpose": "Test fixtures",
+      "fileCount": 2,
+      "lastAccessed": 1792995588488,
+      "keyFiles": [
+        "props.json",
+        "words.json"
+      ]
+    },
+    "remotion\\node_modules": {
+      "path": "remotion\\node_modules",
+      "purpose": "Dependencies",
+      "fileCount": 1,
+      "lastAccessed": 1792995588490,
+      "keyFiles": []
+    },
+    "remotion\\out": {
+      "path": "remotion\\out",
+      "purpose": "Build output",
+      "fileCount": 2,
+      "lastAccessed": 1792995588491,
+      "keyFiles": [
+        "fixture.mp4",
+        "frame_3500.png"
+      ]
+    },
+    "remotion\\public": {
+      "path": "remotion\\public",
+      "purpose": "Public files",
+      "fileCount": 0,
+      "lastAccessed": 1792995588493,
+      "keyFiles": []
+    },
+    "remotion\\scripts": {
+      "path": "remotion\\scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 1,
+      "lastAccessed": 1792995588495,
+      "keyFiles": [
+        "render-fixture.sh"
+      ]
+    },
+    "remotion\\src": {
+      "path": "remotion\\src",
+      "purpose": "Source code",
+      "fileCount": 13,
+      "lastAccessed": 1792995588498,
+      "keyFiles": [
+        "BottomBar.tsx",
+        "BrandHeader.tsx",
+        "Captions.tsx"
+      ]
+    },
+    "tests\\fixtures": {
+      "path": "tests\\fixtures",
+      "purpose": "Test fixtures",
+      "fileCount": 2,
+      "lastAccessed": 1792995588502,
+      "keyFiles": [
+        "sample_segments_real.json",
+        "sample_words_real.json"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "output/review.md",
+      "accessCount": 2,
+      "lastAccessed": 1792997118724,
+      "type": "file"
+    },
+    {
+      "path": "md2short/script_engine.py",
+      "accessCount": 2,
+      "lastAccessed": 1792997457833,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "accessCount": 1,
+      "lastAccessed": 1792995589277,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1792996225865,
+      "type": "directory"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv/a_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792996444666,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv/b_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792996445735,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv/c_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792996446443,
+      "type": "file"
+    },
+    {
+      "path": "md2short/audio_post.py",
+      "accessCount": 1,
+      "lastAccessed": 1792997247741,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_planners.py",
+      "accessCount": 1,
+      "lastAccessed": 1792997525417,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv2/a_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792997935885,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv2/b_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792997936805,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv3/sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792998167711,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv4/sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792998718330,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/cands.png",
+      "accessCount": 1,
+      "lastAccessed": 1792999233082,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/cands2.png",
+      "accessCount": 1,
+      "lastAccessed": 1792999254292,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv5/a_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792999840314,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv5/b_sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792999841573,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv6/sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1792999957241,
+      "type": "file"
+    },
+    {
+      "path": "C:/Users/YONGSU~1/AppData/Local/Temp/claude/D--short03/f39adb41-8d87-4b89-b030-ee86c8882798/scratchpad/rv7/sheet.png",
+      "accessCount": 1,
+      "lastAccessed": 1793000147635,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

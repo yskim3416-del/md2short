@@ -1,0 +1,21 @@
+# secrets
+.env
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# job outputs
+jobs/
+output/
+# node / remotion
+node_modules/
+remotion/public/jobs/
+remotion/out/
+# omc runtime state
+**/.omc/state/
+remotion/public/emoticon/
+remotion/public/img/
+remotion/public/company/
+remotion/out/
+remotion/public/bgm/

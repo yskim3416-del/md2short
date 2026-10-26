@@ -1,0 +1,27 @@
+# Ralph progress — MD2Short v1 (session f39adb41)
+
+## 2026-10-26 iteration 1
+- US-001..006 구현·검증 완료 (uv run pytest: 51 passed, 오프라인 E2E 렌더 3건 포함; tsc --noEmit ok; ralph verify clean)
+- Python: md2short/{cli,pipeline,schema,state,timeutil,_retry,script,script_engine,tts_text,voice,transcript,numeric_display,caption_plan,emoticon_map,data_extract,storyboard,opening,render,qc}.py
+- Remotion (executor 위임): remotion/src/*, 4.0.538, fixture render 5.000s 1080x1920
+- 계약: .omc/contracts/props-contract.md (captionSegments는 Python이 확정, Remotion fallback 규칙 동일)
+
+## Learnings / patterns
+- omc root = git root. git init 전에는 ~/.omc 를 PRD 경로로 잡음 → git init 먼저.
+- PRD 스키마: branchName + userStories 필수 (branch/stories는 Invalid PRD structure).
+- ralph verify 는 성공 출력 줄도 signature로 취급 → feedback command를 실패 시에만 출력하게 (`>NUL 2>&1 || 재실행`, cmd.exe 문법).
+- winget 설치 후 현재 셸 PATH 미갱신 → scratchpad/env.sh 로 PATH export.
+- docs 대비 의도적 변경 (US-008에서 docs 반영 예정):
+  * numeric_display: 임계값 0.86/0.84 → 대본 토큰 시퀀스 정렬 + SPAN_MATCH_THRESHOLD 0.5, Scribe 분할 단어 병합
+  * NumberCard timing: 문자 위치 비례 매핑 → words.json 단어 start 직접 사용 (§3.2 추정 금지 준수)
+  * words.json = 표시 정렬된 단어(원문 표기·구두점), raw는 logs/scribe_raw.json
+  * qc OpenAI 단가 상수 OPENAI_GPT55_* → OPENAI_TEXT_*
+  * CLI: --no-opening / --outro 옵션 추가, photo는 exit 1 (deferred)
+  * EMOTICON scoring: 매칭 keyword 길이 합
+
+## 2026-10-26 iteration 1 (cont.) — US-007/008
+- 실제 E2E: sample.md sf_20261026_ca5f79 qc_passed (tail 254ms→재실행 값, mp4 Δ≈10ms), storyboard sf_20261026_1fc513 qc_passed (tail 363ms, Δ10ms)
+- voice: 기본 v1jVu1Ky28piIPEJqRrm(KKC RADIO, library) → 무료 플랜 402. premade Daniel onwK4e9ZLuTAKqWW03F9로 실행 (사용자 선택)
+- 프레임 검수 후 수정: visual cue를 문장 span 단위로(24→15 cue), 연속 중복 제거, 카드 라벨 조사 제거, 특정 종목 이미지(50번) 일반어 매칭 제거
+- 회귀 fixture: tests/fixtures/sample_words_real.json (실제 Scribe 타이밍)
+- pytest 53 passed, ralph verify clean

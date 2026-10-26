@@ -1,0 +1,23 @@
+{
+  "audioFileName": "jobs/fixture/narration.mp3",
+  "wordsFileName": "jobs/fixture/words.json",
+  "bgColor": "#FFFFFF",
+  "chunkSize": 14,
+  "headerLogoFileName": "img/header_logo.png",
+  "emoticonCues": [
+    {"startMs": 0, "durationMs": 2800, "emoticonFileName": "emoticon/05_분석중_차트.png", "keyword": "코스피", "assetKind": "emoticon", "visualMode": "emoticon"},
+    {"startMs": 2800, "durationMs": 2200, "emoticonFileName": "emoticon/09_가즈아_상승.png", "keyword": "상승", "assetKind": "emoticon", "visualMode": "emoticon"}
+  ],
+  "captionSegments": [],
+  "companyLogoCues": [],
+  "numberCards": [
+    {"startMs": 1000, "durationMs": 1800, "text": "2,750", "label": "코스피"}
+  ],
+  "highlightKeywords": ["상승", "매수세"],
+  "openingText": "",
+  "openingDurationMs": 0,
+  "showOpening": false,
+  "ctaText": "구독과 알림 설정 부탁드립니다",
+  "showOutro": false,
+  "durationInFrames": 150
+}

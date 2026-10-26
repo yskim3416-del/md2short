@@ -1,0 +1,18 @@
+/* Seoul fonts are optional. Drop files into remotion/public/font/ (see font/README.md at repo root).
+   Missing files are skipped by the browser; the fallback stack below is used instead.
+   Stack: 'SeoulNotice','SeoulAlrim','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif */
+@font-face {
+  font-family: 'SeoulNotice';
+  src: url('SeoulNotice.ttf') format('truetype'), url('SeoulNotice.otf') format('opentype');
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SeoulAlrim';
+  src: url('SeoulAlrim.ttf') format('truetype'), url('SeoulAlrim.otf') format('opentype');
+  font-weight: 400 900;
+  font-display: swap;
+}
+body {
+  font-family: 'SeoulNotice','SeoulAlrim','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+}

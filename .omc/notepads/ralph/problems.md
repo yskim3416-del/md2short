@@ -1,0 +1,3 @@
+- 2026-10-26 md2short v1: `omc ralph verify` needed git init (omc root fell back to ~/.omc), PRD keys `branchName`/`userStories`, and a success-silent feedback command (`>NUL 2>&1 ||`) because passing stdout lines were fingerprinted as new failures.
+- 2026-10-26 md2short v1: real E2E dragged on ElevenLabs setup — key pasted with 1 extra char, then default library voice v1jVu1Ky28piIPEJqRrm returns 402 on free plan; ran with premade Daniel voice instead.
+- 2026-10-26 md2short v1: architect REJECTED first pass ("다우 4" number card from index lookahead crossing a sentence; words.json load error swallowed in Remotion) — fixed and re-approved; deslop pass wrongly normalized CRLF repo-wide and was reverted.

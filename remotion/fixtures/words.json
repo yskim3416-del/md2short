@@ -1,0 +1,15 @@
+{
+  "language_code": "kor",
+  "audio_duration_ms": 5000,
+  "text": "오늘 코스피가 크게 상승했습니다. 외국인 매수세가 이어지고 있습니다.",
+  "words": [
+    {"text": "오늘", "start": 0, "end": 350},
+    {"text": "코스피가", "start": 400, "end": 900},
+    {"text": "크게", "start": 950, "end": 1250},
+    {"text": "상승했습니다.", "start": 1300, "end": 2000},
+    {"text": "외국인", "start": 2800, "end": 3200},
+    {"text": "매수세가", "start": 3250, "end": 3750},
+    {"text": "이어지고", "start": 3800, "end": 4300},
+    {"text": "있습니다.", "start": 4350, "end": 4900}
+  ]
+}
